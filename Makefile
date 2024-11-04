@@ -295,6 +295,11 @@ docker-demoserver: docker-envlist
 	echo "Check http://localhost:8080 you should have a demoserver running there."
 	git checkout -- ./docker/env.list  # restore env.list file
 
+docker-devserver-image: docker-envlist
+	# Build the kolibridev image: contains source code + pip install -e of kolibri
+	docker image build \
+			-f docker/dev.dockerfile \
+			-t "learningequality/kolibridev" .
 
 docker-devserver: docker-envlist
 	# Build the kolibridev image: contains source code + pip install -e of kolibri

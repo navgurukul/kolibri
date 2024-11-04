@@ -31,8 +31,8 @@ jobs:
 
       - name: Build and tag Docker image
         run: |
-          docker image build . -f docker/base.dockerfile -t "learningequality/kolibribase"
-          make docker-devserver
+          make docker-build-base
+          make docker-devserver-image
           docker tag learningequality/kolibridev ghcr.io/${{ github.repository }}/kolibridev:latest
 
       - name: Push Docker image to GitHub Container Registry
